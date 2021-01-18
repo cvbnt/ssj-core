@@ -16,7 +16,6 @@ import java.util.List;
 @Repository
 public interface TeacherRepository extends JpaRepository<TeacherEntity, Integer> {
     @Query(value = "select * from teacher where locate (?1,name) > 0", nativeQuery = true)
-
     List<TeacherEntity> search(String name);
 
     @Modifying(clearAutomatically = true)
@@ -36,4 +35,5 @@ public interface TeacherRepository extends JpaRepository<TeacherEntity, Integer>
             "where id=:#{#teacherEntity.id}", nativeQuery = true)
     void update(@Param("teacherEntity") TeacherEntity teacherEntity);
 
+    int countById(@Param("teacherEntity") TeacherEntity teacherEntity);
 }
