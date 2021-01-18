@@ -1,6 +1,6 @@
 # ssj-core  
 整合SpringBoot,Shiro,Spring Data Jpa,Thymeleaf  
-数据库SQl文件在SQl文件夹内  
+数据库SQL文件在SQL文件夹内  
 配置文件Application.yaml  
 shiro默认登陆账号密码:  
 root  
