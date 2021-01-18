@@ -2,6 +2,7 @@ package com.hao123.core.Config;
 
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +25,7 @@ public class ShiroConfig {
         DefaultWebSecurityManager defaultWebSecurityManager = new DefaultWebSecurityManager();
 //       关联realm
         defaultWebSecurityManager.setRealm(userRealm);
+        defaultWebSecurityManager.setSessionManager(mySessionManager());
         return defaultWebSecurityManager;
     }
     //设置安全管理器
@@ -44,6 +46,14 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setLoginUrl("/index");
         //设置登录界面链接
         return shiroFilterFactoryBean;
+    }
+
+    @Bean
+    public DefaultWebSessionManager mySessionManager(){
+        DefaultWebSessionManager defaultSessionManager = new DefaultWebSessionManager();
+        //将sessionIdUrlRewritingEnabled属性设置成false
+        defaultSessionManager.setSessionIdUrlRewritingEnabled(false);
+        return defaultSessionManager;
     }
 }
 
