@@ -1,14 +1,11 @@
 package com.hao123.core;
 
-import com.alibaba.excel.EasyExcel;
-import com.hao123.core.Entity.ExcelData.TeacherData;
 import com.hao123.core.Entity.TeacherEntity;
 import com.hao123.core.Repository.TeacherRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
@@ -39,20 +36,8 @@ class CoreApplicationTests {
         teacherRepository.update(teacherEntity);
     }
 
-    @Test
-    void name() {
-        String fileName = System.currentTimeMillis() + ".xlsx";
-        EasyExcel.write(fileName, TeacherData.class).sheet("模板").doWrite(data());
-    }
 
-    private List<TeacherData> data(){
-        List<TeacherData> list = new ArrayList<>();
-        for (long i=0;i<teacherRepository.count();i++){
-            TeacherData teacherData = teacherRepository.findById(Math.toIntExact(i)).orElse(new TeacherEntity());
-            list.add(teacherData);
-        }
-        return list;
-    }
+
 
     @Test
     void name2() {

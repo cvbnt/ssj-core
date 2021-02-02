@@ -1,7 +1,7 @@
 package com.hao123.core.Controller;
 
 import com.alibaba.excel.EasyExcel;
-import com.hao123.core.Entity.ExcelData.TeacherData;
+import com.hao123.core.Entity.TeacherEntity;
 import com.hao123.core.Util.GetExcelData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +25,6 @@ public class ExportExcelController {
     @RequestMapping("/pages/exportexcel")
     public void exportExcel(HttpServletResponse response) throws IOException {
         response.setContentType("application/vnd.ms-excel");
-//        response.setContentType("application/octet-stream");
         response.setCharacterEncoding("utf-8");
 
         SimpleDateFormat sdf = new SimpleDateFormat();
@@ -36,6 +35,6 @@ public class ExportExcelController {
         // 获取当前时间
         String fileName = sdf.format(date);
         response.setHeader("Content-disposition", "attachment;filename*=utf-8''" + fileName + ".xlsx");
-        EasyExcel.write(response.getOutputStream(), TeacherData.class).sheet("模板").doWrite(getExcelData.data());
+        EasyExcel.write(response.getOutputStream(), TeacherEntity.class).sheet("模板").doWrite(getExcelData.data());
     }
 }

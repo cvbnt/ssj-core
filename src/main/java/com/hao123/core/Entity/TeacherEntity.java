@@ -1,10 +1,10 @@
 package com.hao123.core.Entity;
 
 import com.alibaba.excel.annotation.ExcelProperty;
-import com.hao123.core.Entity.ExcelData.TeacherData;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -12,158 +12,149 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "teacher", schema = "database")
-public class TeacherEntity extends TeacherData {
+public class TeacherEntity {
+    @ExcelProperty("id")
     private int id;
+    @ExcelProperty("学校编号")
     private int schoolId;
+    @ExcelProperty("教师编号")
     private String teacherCode;
+    @ExcelProperty("头像")
     private String avatar;
+    @ExcelProperty("姓名")
     private String name;
+    @ExcelProperty("性别")
     private String sex;
+    @ExcelProperty("职级")
     private String title;
+    @ExcelProperty("学科")
     private String subject;
+    @ExcelProperty("手机号码")
     private String phone;
-    private Timestamp startTeachDate;
-    private Timestamp createAt;
-    private Timestamp updateAt;
+    @ExcelProperty("执教开始日期")
+    private Date startTeachDate;
+    @ExcelProperty("创建时间")
+    private Date createAt;
+    @ExcelProperty("更新时间")
+    private Date updateAt;
 
-    @Override
     @Id
     @Column(name = "id")
     public int getId() {
         return id;
     }
 
-    @Override
     public void setId(int id) {
         this.id = id;
     }
 
-    @Override
     @Basic
     @Column(name = "schoolId")
     public int getSchoolId() {
         return schoolId;
     }
 
-    @Override
     public void setSchoolId(int schoolId) {
         this.schoolId = schoolId;
     }
 
-    @Override
     @Basic
     @Column(name = "teacherCode")
     public String getTeacherCode() {
         return teacherCode;
     }
 
-    @Override
     public void setTeacherCode(String teacherCode) {
         this.teacherCode = teacherCode;
     }
 
-    @Override
     @Basic
     @Column(name = "avatar")
     public String getAvatar() {
         return avatar;
     }
 
-    @Override
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 
-    @Override
     @Basic
     @Column(name = "name")
     public String getName() {
         return name;
     }
 
-    @Override
     public void setName(String name) {
         this.name = name;
     }
 
-    @Override
     @Basic
     @Column(name = "sex")
     public String getSex() {
         return sex;
     }
 
-    @Override
     public void setSex(String sex) {
         this.sex = sex;
     }
 
-    @Override
     @Basic
     @Column(name = "title")
     public String getTitle() {
         return title;
     }
 
-    @Override
     public void setTitle(String title) {
         this.title = title;
     }
 
-    @Override
     @Basic
     @Column(name = "subject")
     public String getSubject() {
         return subject;
     }
 
-    @Override
     public void setSubject(String subject) {
         this.subject = subject;
     }
 
-    @Override
     @Basic
     @Column(name = "phone")
     public String getPhone() {
         return phone;
     }
 
-    @Override
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    @Override
     @Basic
     @Column(name = "startTeachDate")
-    public Timestamp getStartTeachDate() {
+    public Date getStartTeachDate() {
         return startTeachDate;
     }
 
-    public void setStartTeachDate(Timestamp startTeachDate) {
+    public void setStartTeachDate(Date startTeachDate) {
         this.startTeachDate = startTeachDate;
     }
 
-    @Override
     @Basic
     @Column(name = "createAt")
-    public Timestamp getCreateAt() {
+    public Date getCreateAt() {
         return createAt;
     }
 
-    public void setCreateAt(Timestamp createAt) {
+    public void setCreateAt(Date createAt) {
         this.createAt = createAt;
     }
 
-    @Override
     @Basic
     @Column(name = "updateAt")
-    public Timestamp getUpdateAt() {
+    public Date getUpdateAt() {
         return updateAt;
     }
 
-    public void setUpdateAt(Timestamp updateAt) {
+    public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
     }
 

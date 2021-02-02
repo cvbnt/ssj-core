@@ -1,7 +1,5 @@
 package com.hao123.core.Util;
 
-import com.alibaba.excel.EasyExcel;
-import com.hao123.core.Entity.ExcelData.TeacherData;
 import com.hao123.core.Entity.TeacherEntity;
 import com.hao123.core.Repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +20,11 @@ public class GetExcelData {
         this.teacherRepository = teacherRepository;
     }
 
-    public List<TeacherData> data(){
-        List<TeacherData> list = new ArrayList<>();
+    public List<TeacherEntity> data(){
+        List<TeacherEntity> list = new ArrayList<>();
         for (int i=1;i<teacherRepository.count()+1;i++){
-            TeacherData teacherData = teacherRepository.findById(i).orElse(new TeacherEntity());
-            list.add(teacherData);
+            TeacherEntity teacherEntity = teacherRepository.findById(i).orElse(new TeacherEntity());
+            list.add(teacherEntity);
         }
         return list;
     }

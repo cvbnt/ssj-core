@@ -35,5 +35,9 @@ public interface TeacherRepository extends JpaRepository<TeacherEntity, Integer>
             "where id=:#{#teacherEntity.id}", nativeQuery = true)
     void update(@Param("teacherEntity") TeacherEntity teacherEntity);
 
+    /**
+     * @param teacherEntity
+     * @return
+     */
     int countById(@Param("teacherEntity") TeacherEntity teacherEntity);
 }

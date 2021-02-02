@@ -14,18 +14,22 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 column">
+            <div class="col-md-8 column">
+                <form  th:action="@{/pages/importexcel}" enctype='multipart/form-data' method='POST'>
                 <a class="btn btn-primary" th:href="@{/pages/add}">新增教师</a>
                 <a class="btn btn-primary" th:href="@{/pages/list}">显示所有教师</a>
                 <a class="btn btn-primary" th:href="@{/pages/exportexcel}">导出全部</a>
-                <
+                    <input type="file"  name="file" style="display:none" onchange="upload.click()" >
+                    <input type="button" class="btn btn-primary" onclick="file.click()"  value="导入全部"/>
+                    <button  type="submit" name="upload" style="display:none"></button>
+                </form>
             </div>
-            <div class="col-md-8 column">
-                <form  action="#" class="form-inline" th:action="@{/pages/search}"  method="post" style="float:right">
+            <div class="col-md-4 column">
+                <form action="#" class="form-inline" th:action="@{/pages/search}" method="post" style="float:right">
                     <label>
-                        <input type="text" name="name" width="50%"  class="from-control" placeholder="请输入要查询的教师名称"/>
+                        <input type="text" name="name" width="50%" class="from-control" placeholder="请输入要查询的教师名称"/>
                     </label>
-                    <input type="submit" class="btn btn-primary" value="查询" >
+                    <input type="submit" class="btn btn-primary" value="查询">
                 </form>
             </div>
         </div>
