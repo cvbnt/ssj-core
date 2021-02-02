@@ -1,7 +1,10 @@
 package com.hao123.core.Entity;
 
+import com.alibaba.excel.annotation.ExcelProperty;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -10,18 +13,30 @@ import java.util.Objects;
 @Entity
 @Table(name = "teacher", schema = "database")
 public class TeacherEntity {
+    @ExcelProperty("id")
     private int id;
+    @ExcelProperty("学校编号")
     private int schoolId;
+    @ExcelProperty("教师编号")
     private String teacherCode;
+    @ExcelProperty("头像")
     private String avatar;
+    @ExcelProperty("姓名")
     private String name;
+    @ExcelProperty("性别")
     private String sex;
+    @ExcelProperty("职级")
     private String title;
+    @ExcelProperty("学科")
     private String subject;
+    @ExcelProperty("手机号码")
     private String phone;
-    private Timestamp startTeachDate;
-    private Timestamp createAt;
-    private Timestamp updateAt;
+    @ExcelProperty("执教开始日期")
+    private Date startTeachDate;
+    @ExcelProperty("创建时间")
+    private Date createAt;
+    @ExcelProperty("更新时间")
+    private Date updateAt;
 
     @Id
     @Column(name = "id")
@@ -115,31 +130,31 @@ public class TeacherEntity {
 
     @Basic
     @Column(name = "startTeachDate")
-    public Timestamp getStartTeachDate() {
+    public Date getStartTeachDate() {
         return startTeachDate;
     }
 
-    public void setStartTeachDate(Timestamp startTeachDate) {
+    public void setStartTeachDate(Date startTeachDate) {
         this.startTeachDate = startTeachDate;
     }
 
     @Basic
     @Column(name = "createAt")
-    public Timestamp getCreateAt() {
+    public Date getCreateAt() {
         return createAt;
     }
 
-    public void setCreateAt(Timestamp createAt) {
+    public void setCreateAt(Date createAt) {
         this.createAt = createAt;
     }
 
     @Basic
     @Column(name = "updateAt")
-    public Timestamp getUpdateAt() {
+    public Date getUpdateAt() {
         return updateAt;
     }
 
-    public void setUpdateAt(Timestamp updateAt) {
+    public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
     }
 
