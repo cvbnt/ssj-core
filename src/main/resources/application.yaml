@@ -3,7 +3,10 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3307/database?&serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
     username: root
-    password: _________
+    password: 546549783
+  output:
+    ansi:
+      enabled: always
   servlet:
     multipart:
       enabled: true
@@ -16,3 +19,18 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     database-platform: org.hibernate.dialect.MySQLDialect
     show-sql: false
+server:
+  ssl:
+    enabled: true
+#    key-store-type: jks
+#    key-store: classpath:keystore/localhost.jks
+#    key-store-password: changeit
+#    key-alias: localhost
+    key-store-type: PKCS12
+    key-store: classpath:keystore/localhost.p12
+    key-store-password: changeit
+    key-alias: localhost
+  port: 8080
+  http2:
+    enabled: true
+
