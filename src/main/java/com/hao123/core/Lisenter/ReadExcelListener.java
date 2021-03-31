@@ -5,12 +5,14 @@ import com.alibaba.excel.event.AnalysisEventListener;
 import com.hao123.core.Entity.TeacherEntity;
 import com.hao123.core.Repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+
+/**
+ * @author cvbnt
+ */
 public class ReadExcelListener extends AnalysisEventListener<TeacherEntity> {
     @Autowired
     private TeacherRepository teacherRepository;

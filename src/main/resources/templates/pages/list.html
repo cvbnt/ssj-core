@@ -15,12 +15,12 @@
         </div>
         <div class="row">
             <div class="col-md-8 column">
-                <form  th:action="@{/pages/importexcel}" enctype='multipart/form-data' method='POST'>
-                <a class="btn btn-primary" th:href="@{/pages/add}">新增教师</a>
-                <a class="btn btn-primary" th:href="@{/pages/list}">显示所有教师</a>
-                <a class="btn btn-primary" th:href="@{/pages/exportexcel}">导出全部</a>
-                    <input type="file"  name="file" style="display:none" onchange="upload.click()" >
-                    <input type="button" class="btn btn-primary" onclick="file.click()"  value="导入全部"/>
+                <form th:action="@{/pages/importexcel}" enctype='multipart/form-data' method='POST'>
+                    <a class="btn btn-primary" th:href="@{/pages/add}">新增教师</a>
+                    <a class="btn btn-primary" th:href="@{/pages/list/1}">显示所有教师</a>
+                    <a class="btn btn-primary" th:href="@{/pages/exportexcel}">导出全部</a>
+                    <input type="file" name="file" style="display:none" onchange="upload.click()">
+                    <input type="button" class="btn btn-primary" onclick="file.click()" value="导入全部"/>
                     <button type="submit" name="upload" style="display:none"></button>
                 </form>
             </div>
@@ -79,5 +79,23 @@
         </div>
     </div>
 </div>
+    <nav aria-label="Page navigation" style="text-align: center;">
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li><a th:href="@{/pages/list/1}">1</a></li>
+            <li><a th:href="@{/pages/list/2}">2</a></li>
+            <li><a th:href="@{/pages/list/3}">3</a></li>
+            <li><a th:href="@{/pages/list/4}">4</a></li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 </body>
 </html>

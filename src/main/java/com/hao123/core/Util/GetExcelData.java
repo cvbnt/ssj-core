@@ -16,10 +16,6 @@ public class GetExcelData {
     @Autowired
     private TeacherRepository teacherRepository;
 
-    public GetExcelData(TeacherRepository teacherRepository) {
-        this.teacherRepository = teacherRepository;
-    }
-
     public List<TeacherEntity> data(){
         List<TeacherEntity> list = new ArrayList<>();
         for (int i=1;i<teacherRepository.count()+1;i++){

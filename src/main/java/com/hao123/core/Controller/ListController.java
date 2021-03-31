@@ -4,14 +4,17 @@ import ch.qos.logback.classic.Logger;
 import com.google.common.flogger.FluentLogger;
 import com.hao123.core.Entity.TeacherEntity;
 import com.hao123.core.Repository.TeacherRepository;
+import com.hao123.core.Service.TeacherService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -22,6 +25,9 @@ public class ListController {
     private static final FluentLogger fLogger = FluentLogger.forEnclosingClass();
     final Logger logger = (Logger) LoggerFactory.getLogger(ListController.class);
     private final TeacherRepository teacherRepository;
+
+    @Autowired
+    private TeacherService teacherService;
 
     public ListController(TeacherRepository teacherRepository) {
         this.teacherRepository = teacherRepository;
@@ -42,7 +48,7 @@ public class ListController {
         try {
             subject.login(token);
             logger.info("登录成功");
-            return "redirect:/pages/list";
+            return "redirect:/pages/list/1";
         } catch (UnknownAccountException e) {
             model.addAttribute("msg", "用户名不存在");
             logger.info("用户名不存在");
@@ -54,10 +60,15 @@ public class ListController {
         }
     }
 
-    @RequestMapping("/pages/list")
-    public String list(Model model) {
-        List<TeacherEntity> list = teacherRepository.findAll();
+    @RequestMapping("/pages/list/{page}")
+    public String list(@PathVariable("page") int page, Model model) {
+        if (page<=0){
+            page=1;
+        }
+        List<TeacherEntity> list = teacherService.findAll(page);
+        Long count=teacherService.count();
         model.addAttribute("listKey", list);
+        model.addAttribute("count",count);
         return "pages/list";
     }
 }
