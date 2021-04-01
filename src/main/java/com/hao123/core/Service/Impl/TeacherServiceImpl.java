@@ -1,7 +1,7 @@
 package com.hao123.core.Service.Impl;
 
-import com.hao123.core.Constant.Constant;
 import com.hao123.core.Entity.TeacherEntity;
+import com.hao123.core.Enum.PageEnum;
 import com.hao123.core.Repository.TeacherRepository;
 import com.hao123.core.Service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class TeacherServiceImpl implements TeacherService {
     private TeacherService teacherService;
     @Override
     public List<TeacherEntity> findAll(int page) {
-        Pageable pageable = PageRequest.of(page-1, Constant.pageSize);
+        Pageable pageable = PageRequest.of(page-1, PageEnum.NormalPageSize.getNumber());
         Page<TeacherEntity> teacherPage = teacherRepository.findAll(pageable);
         return teacherPage.getContent();
     }
